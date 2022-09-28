@@ -5,8 +5,8 @@
     <div>
         {{ person2 }}
     </div>
-    <button type="" @click="change">修改</button>
-    <button type="" @click="change2">修改2</button>
+    <button @click="change">修改</button>
+    <button @click="change2">修改2</button>
 
     <div>
         <input v-model="firstName" type="text" />
@@ -22,7 +22,7 @@
 
     type P = {
         name: string
-        age: int
+        age: number
     }
     const person = ref<P>({ name: 'niko', age: 20 })
 
