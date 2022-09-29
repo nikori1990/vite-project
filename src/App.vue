@@ -16,6 +16,8 @@
             {{ name }}
         </div>
     </div>
+
+    <router-view></router-view>
 </template>
 <script setup lang="ts">
     // const env = ref(import.meta.env)

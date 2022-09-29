@@ -9,6 +9,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import AutoImport from 'unplugin-auto-import/vite'
 
+import Pages from 'vite-plugin-pages'
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, ssrBuild }) => {
     const root = process.cwd()
@@ -29,6 +31,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
             strictPort: true,
         },
         plugins: [
+            Pages(),
             vue(),
             vueJsx(),
             AutoImport({
