@@ -42,7 +42,7 @@ module.exports = defineConfig({
         '@typescript-eslint/explicit-module-boundary-types': 'off', // 需要导出函数和类的公共类方法的显式返回和参数类型
         // 禁止未使用的变量
         '@typescript-eslint/no-unused-vars': [
-            'error',
+            'warn',
             {
                 argsIgnorePattern: '^_',
                 varsIgnorePattern: '^_',
