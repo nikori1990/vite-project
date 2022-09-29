@@ -16,7 +16,8 @@
         "lint:lint-staged": "lint-staged -c .husky/lintstagedrc.js",
         "lint:pretty": "pretty-quick --staged",
         "install:husky": "is-ci || husky install",
-        "postinstall": "npm run install:husky"
+        "postinstall": "npm run install:husky",
+        "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-config.cjs"
     },
     "dependencies": {
         "pinia": "^2.0.22",
@@ -30,7 +31,9 @@
         "@typescript-eslint/eslint-plugin": "^5.38.0",
         "@typescript-eslint/parser": "^5.38.0",
         "@vitejs/plugin-vue": "^3.1.0",
+        "@vitejs/plugin-vue-jsx": "^2.0.1",
         "autoprefixer": "^10.4.12",
+        "conventional-changelog-cli": "^2.2.2",
         "eslint": "^8.24.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-define-config": "^1.7.0",
