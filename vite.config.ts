@@ -7,7 +7,7 @@ export default defineConfig({
     envPrefix: ['VITE', 'NIKO'], //环境变量支持的前缀
     server: {
         port: 3000,
-        strictPort: true
+        strictPort: true,
     },
-    plugins: [vue()]
+    plugins: [vue()],
 })

@@ -20,6 +20,9 @@
 <script setup lang="ts">
     import { ref, reactive, computed } from 'vue'
 
+    // const env = ref(import.meta.env)
+    // console.log('env', env.value)
+
     type P = {
         name: string
         age: number

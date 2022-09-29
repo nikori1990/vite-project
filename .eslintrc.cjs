@@ -6,7 +6,7 @@ module.exports = defineConfig({
         // 环境
         browser: true, // 浏览器环境中的全局变量。
         node: true, // Node.js 全局变量和 Node.js 作用域。
-        es6: true // 启用除了 modules 以外的所有 ECMAScript 6 特性（该选项会自动设置 ecmaVersion 解析器选项为 6）。
+        es6: true, // 启用除了 modules 以外的所有 ECMAScript 6 特性（该选项会自动设置 ecmaVersion 解析器选项为 6）。
     },
     parser: 'vue-eslint-parser', // 解析器
     parserOptions: {
@@ -18,8 +18,8 @@ module.exports = defineConfig({
         ecmaFeatures: {
             // 表示你想使用的额外的语言特性
             jsx: true, // 启用 JSX
-            tsx: true
-        }
+            tsx: true,
+        },
     },
     // 插件
     plugins: ['@typescript-eslint', 'prettier'],
@@ -27,7 +27,7 @@ module.exports = defineConfig({
         'plugin:vue/vue3-recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier',
-        'plugin:prettier/recommended' // 一定要放在最后。因为 extends 中后引入的规则会覆盖前面的规则。
+        'plugin:prettier/recommended', // 一定要放在最后。因为 extends 中后引入的规则会覆盖前面的规则。
     ],
     rules: {
         // @typescript-eslint
@@ -45,8 +45,8 @@ module.exports = defineConfig({
             'error',
             {
                 argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_'
-            }
+                varsIgnorePattern: '^_',
+            },
         ],
 
         'prettier/prettier': 'error',
@@ -125,15 +125,15 @@ module.exports = defineConfig({
         'max-statements-per-line': [
             'warn',
             {
-                max: 1
-            }
+                max: 1,
+            },
         ],
         // 要求方法链中每个调用都有一个换行符
         'newline-per-chained-call': [
             'warn',
             {
-                ignoreChainWithDepth: 3
-            }
+                ignoreChainWithDepth: 3,
+            },
         ],
         // 禁止 if 作为唯一的语句出现在 else 语句中
         'no-lonely-if': 'warn',
@@ -184,8 +184,8 @@ module.exports = defineConfig({
         'vue/multi-word-component-names': 'off', // 是否开启组件命名规则校验（强制多个单词以驼峰或'-'链接的命名规则）
         // ESLint
         'no-use-before-define': 'off', // 禁止在变量定义之前使用它们
-        'space-before-function-paren': 'off' // 强制在 function的左括号之前使用一致的空格
-    }
+        'space-before-function-paren': 'off', // 强制在 function的左括号之前使用一致的空格
+    },
     //  overrides: [ // 若要开启组件命名规则校验，建议选这种方式
     //    {
     //      files: ['src/views/index.vue', 'src/views/**/index.vue'], // 匹配 views 和任意多级路径中的 index.vue
