@@ -11,13 +11,19 @@
         "isolatedModules": true,
         "esModuleInterop": true,
         "lib": ["ESNext", "DOM"],
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "types": ["element-plus/global"],
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["src/*"],
+          // "#/*": ["types/*"]
+      },
     },
     "include": [
         "src/**/*.ts",
         "src/**/*.d.ts",
         "src/**/*.tsx",
-        "src/**/*.vue"
+        "src/**/*.vue",
     ],
     "exclude": [
         "node_modules",

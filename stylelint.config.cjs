@@ -13,14 +13,35 @@ module.exports = {
         'selector-pseudo-class-no-unknown': [
             true,
             {
-                ignorePseudoClasses: ['global'],
+                ignorePseudoClasses: ['deep', 'global'],
+            },
+        ],
+        'selector-pseudo-element-no-unknown': [
+            true,
+            {
+                ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted'],
             },
         ],
         // ↓禁止使用未知规则。
         'at-rule-no-unknown': [
             true,
             {
-                ignoreAtRules: ['function', 'if', 'each', 'include', 'mixin'],
+                ignoreAtRules: [
+                    'tailwind',
+                    'apply',
+                    'variants',
+                    'responsive',
+                    'screen',
+                    'function',
+                    'if',
+                    'each',
+                    'include',
+                    'each',
+                    'include',
+                    'mixin',
+                    'forward',
+                    'use',
+                ],
             },
         ],
         // ↓禁止空来源。
@@ -51,6 +72,42 @@ module.exports = {
         // Specify the alphabetical order of the attributes in the declaration block
 
         indentation: 4,
+
+        // Sass rules
+        'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
+        'scss/at-else-closing-brace-space-after': 'always-intermediate',
+        'scss/at-else-empty-line-before': 'never',
+        'scss/at-else-if-parentheses-space-before': 'always',
+        'scss/at-function-named-arguments': 'never',
+        'scss/at-function-parentheses-space-before': 'always',
+        'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
+        'scss/at-if-closing-brace-space-after': 'always-intermediate',
+        'scss/at-mixin-argumentless-call-parentheses': 'always',
+        'scss/at-mixin-named-arguments': 'never',
+        'scss/at-mixin-parentheses-space-before': 'always',
+        'scss/at-rule-no-unknown': true,
+        'scss/dollar-variable-colon-newline-after': 'always-multi-line',
+        'scss/dollar-variable-colon-space-after': 'always-single-line',
+        'scss/dollar-variable-colon-space-before': 'never',
+        'scss/dollar-variable-empty-line-before': [
+            'always',
+            {
+                except: ['after-comment', 'after-dollar-variable', 'first-nested'],
+            },
+        ],
+        'scss/dollar-variable-no-missing-interpolation': true,
+        // 'scss/dollar-variable-pattern': '^_?[a-z]+[\\w-]*$',
+        'scss/dollar-variable-pattern': null,
+        'scss/at-extend-no-missing-placeholder': true,
+        'scss/at-import-no-partial-leading-underscore': true,
+        'scss/double-slash-comment-empty-line-before': 'always',
+        'scss/double-slash-comment-whitespace-inside': 'always',
+        'scss/declaration-nested-properties': 'never',
+        'scss/operator-no-newline-after': true,
+        'scss/operator-no-newline-before': true, //
+        'scss/operator-no-unspaced': true, // Causing url parsing error, temporarily disabled.
+        'scss/selector-no-redundant-nesting-selector': true,
+        'scss/no-duplicate-dollar-variables': true,
 
         // ↓样式顺序
         'order/properties-order': [

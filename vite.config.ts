@@ -8,6 +8,11 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
+
+import css from './vite/css'
 
 import Pages from 'vite-plugin-pages'
 
@@ -37,6 +42,13 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
             AutoImport({
                 imports: ['vue', 'vue-router'], // 自动导入vue和vue-router相关函数
                 dts: 'src/auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明
+                resolvers: [ElementPlusResolver()],
+            }),
+            Components({
+                resolvers: [ElementPlusResolver()],
+            }),
+            ElementPlus({
+                useSource: true,
             }),
         ],
         resolve: {
@@ -44,5 +56,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
                 '@': fileURLToPath(new URL('./src', import.meta.url)), // 引用别名
             },
         },
+        css,
     }
 })

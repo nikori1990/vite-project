@@ -5,8 +5,8 @@
     <div>
         {{ person2 }}
     </div>
-    <button @click="change">修改</button>
-    <button @click="change2">修改2</button>
+    <el-button @click="change">修改</el-button>
+    <el-button @click="change2">修改2</el-button>
 
     <div>
         <input v-model="firstName" type="text" />
@@ -17,11 +17,12 @@
         </div>
     </div>
 
-    <router-view></router-view>
+    <router-view />
 </template>
 <script setup lang="ts">
     // const env = ref(import.meta.env)
     // console.log('env', env.value)
+    import { ElButton } from 'element-plus'
 
     type P = {
         name: string
@@ -44,5 +45,7 @@
     const name = computed(() => {
         return firstName.value + lastName.value
     })
+
+    const components = [ElButton]
 </script>
 <style scoped></style>
