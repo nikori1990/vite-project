@@ -16,7 +16,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver, NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
 
-import css from './vite/css'
+// import css from './vite/css'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, ssrBuild }) => {
@@ -66,6 +66,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
                 '@': fileURLToPath(new URL('./src', import.meta.url)), // 引用别名
             },
         },
-        css,
+        // css,
     }
 })

@@ -5,9 +5,11 @@
 </template>
 <script setup lang="ts">
     type Props = {
-        type: string
+        type?: string
     }
 
-    defineProps<Props>()
+    withDefaults(defineProps<Props>(), {
+        type: 'Header',
+    })
 </script>
 <style scoped></style>

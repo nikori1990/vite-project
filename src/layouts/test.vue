@@ -1,5 +1,5 @@
 <template>
-    <header><Header type="Header" /></header>
+    <header><Header /></header>
     <router-view />
     <footer><Footer type="Footer" /></footer>
 </template>

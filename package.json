@@ -20,7 +20,9 @@
         "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-config.cjs"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
         "element-plus": "^2.2.17",
+        "gsap": "^3.11.2",
         "nprogress": "^0.2.0",
         "pinia": "^2.0.22",
         "vue": "^3.2.37",
@@ -34,6 +36,7 @@
         "@typescript-eslint/parser": "^5.38.0",
         "@vitejs/plugin-vue": "^3.1.0",
         "@vitejs/plugin-vue-jsx": "^2.0.1",
+        "@vueuse/core": "^9.3.0",
         "autoprefixer": "^10.4.12",
         "conventional-changelog-cli": "^2.2.2",
         "eslint": "^8.24.0",

@@ -21,9 +21,35 @@
 
         <div>
             <el-button @click="inc">element-plus:{{ counter.number }}</el-button>
+            <n-button>naive-ui:{{ counter.number }}</n-button>
         </div>
 
-        <n-button>naive-ui:{{ counter.number }}</n-button>
+        <!-- transition -->
+        <div>
+            <el-button @click="flag = !flag">动画效果</el-button>
+        </div>
+        <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+        >
+            <div class="animate" v-show="flag"></div>
+        </transition>
+
+        <!-- transition-group -->
+        <div>
+            <n-button @click="list.push(list.length + 1)">add</n-button>
+            <n-button @click="list.pop()">pop</n-button>
+        </div>
+        <div class="wrap">
+            <transition-group
+                enter-active-class="animate__animated animate__bounceIn"
+                leave-active-class="animate__animated animate__bounceOut"
+            >
+                <div class="item" v-for="item in list" :key="item"> {{ item }}</div>
+            </transition-group>
+        </div>
+
+        <div> pos: {{ x }}, {{ y }} </div>
 
         <!-- 按需引入, components下的组件 -->
         <login />
@@ -42,9 +68,9 @@
     // const env = ref(import.meta.env)
     // console.log('env', env.value)
     // import { ElButton, ElInput } from 'element-plus' 已经按需引入
+    import { useMouse } from '@vueuse/core'
 
     import { useCounterStore } from '../stores/counter'
-    import Login from '@/components/login.vue'
 
     const counter = useCounterStore()
 
@@ -70,10 +96,34 @@
         return firstName.value + lastName.value
     })
 
-    const components = [ElButton]
-
     const inc = () => {
         counter.inc()
     }
+
+    const flag = ref<boolean>(true)
+    const list = ref<number[]>([1, 2, 3, 4, 5, 6])
+
+    const { x, y } = useMouse()
 </script>
-<style scoped></style>
+<style scoped lang="scss">
+    div {
+        margin: 10px 0;
+    }
+
+    .animate {
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(red, yellow, blue);
+    }
+
+    .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        word-break: break-all;
+        border: 1px solid #ccc;
+
+        .item {
+            margin: 10px;
+        }
+    }
+</style>

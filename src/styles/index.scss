@@ -1,12 +1,15 @@
 // element plus 样式重置
 @import "./element-plus/reset";
 
+// css动画
+@import "animate.css";
+
 html,
 body {
     height: 100%;
 
     // overflow-x: hidden;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #app {
