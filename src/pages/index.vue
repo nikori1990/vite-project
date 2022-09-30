@@ -20,9 +20,13 @@
         </div>
 
         <div>
-            counter: {{ counter.number }}
-            <el-button @click="inc">Inc</el-button>
+            <el-button @click="inc">element-plus:{{ counter.number }}</el-button>
         </div>
+
+        <n-button>naive-ui:{{ counter.number }}</n-button>
+
+        <!-- 按需引入, components下的组件 -->
+        <login />
     </div>
 </template>
 
@@ -37,9 +41,10 @@
 <script setup lang="ts">
     // const env = ref(import.meta.env)
     // console.log('env', env.value)
-    import { ElButton, ElInput } from 'element-plus'
+    // import { ElButton, ElInput } from 'element-plus' 已经按需引入
 
     import { useCounterStore } from '../stores/counter'
+    import Login from '@/components/login.vue'
 
     const counter = useCounterStore()
 

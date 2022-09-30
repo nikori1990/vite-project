@@ -13,7 +13,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver, NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
 
 import css from './vite/css'
@@ -43,12 +43,19 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
             Pages(),
             Layouts(),
             AutoImport({
-                imports: ['vue', 'vue-router'], // 自动导入vue和vue-router相关函数
+                imports: [
+                    'vue',
+                    'vue-router',
+                    'pinia',
+                    {
+                        'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+                    },
+                ], // 自动导入vue和vue-router相关函数
                 dts: 'src/auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明
                 resolvers: [ElementPlusResolver()],
             }),
             Components({
-                resolvers: [ElementPlusResolver()],
+                resolvers: [ElementPlusResolver(), NaiveUiResolver()],
             }),
             ElementPlus({
                 useSource: true,

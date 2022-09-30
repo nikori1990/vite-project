@@ -38,6 +38,7 @@ module.exports = {
                     'include',
                     'each',
                     'include',
+                    'import',
                     'mixin',
                     'forward',
                     'use',
