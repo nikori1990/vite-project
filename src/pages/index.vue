@@ -11,12 +11,17 @@
         <el-button @click="change2">修改2</el-button>
 
         <div>
-            <input v-model="firstName" type="text" />
-            <input v-model="lastName" type="text" />
+            <el-input v-model="firstName" type="text" />
+            <el-input v-model="lastName" type="text" />
 
             <div>
                 {{ name }}
             </div>
+        </div>
+
+        <div>
+            counter: {{ counter.number }}
+            <el-button @click="inc">Inc</el-button>
         </div>
     </div>
 </template>
@@ -32,7 +37,11 @@
 <script setup lang="ts">
     // const env = ref(import.meta.env)
     // console.log('env', env.value)
-    import { ElButton } from 'element-plus'
+    import { ElButton, ElInput } from 'element-plus'
+
+    import { useCounterStore } from '../stores/counter'
+
+    const counter = useCounterStore()
 
     type P = {
         name: string
@@ -57,5 +66,9 @@
     })
 
     const components = [ElButton]
+
+    const inc = () => {
+        counter.inc()
+    }
 </script>
 <style scoped></style>
