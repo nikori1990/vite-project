@@ -61,6 +61,7 @@ module.exports = {
         'declaration-colon-space-before': 'never',
         // ↓在声明块内要求或不允许尾随分号。
         'declaration-block-trailing-semicolon': 'always',
+        'declaration-colon-newline-after': 'always-multi-line',
         // ↓在规则之前要求或禁止使用空行。
         'rule-empty-line-before': [
             'always',

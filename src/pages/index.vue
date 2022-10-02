@@ -57,11 +57,11 @@
 </template>
 
 <route>
-  {
-    meta: {
-      layout: 'test'
+    {
+        meta: {
+            layout: 'test'
+        }
     }
-  }
 </route>
 
 <script setup lang="ts">
@@ -70,7 +70,7 @@
     // import { ElButton, ElInput } from 'element-plus' 已经按需引入
     import { useMouse } from '@vueuse/core'
 
-    import { useCounterStore } from '../stores/counter'
+    import { useCounterStore } from '../store/counter'
 
     const counter = useCounterStore()
 
