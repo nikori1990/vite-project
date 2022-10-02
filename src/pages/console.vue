@@ -1,5 +1,6 @@
 <template>
     <div class="page-content">
+        {{ data }}
         <div class="card" v-for="item in 1000" :key="item">
             <h3>{{ item }}</h3>
         </div>
@@ -12,7 +13,13 @@
         }
     }
 </route>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import { useRequest } from 'vue-request'
+    import { getMenuList } from '@/api/menu'
+
+    // 请求接口 /api/get
+    const { data, loading, run } = useRequest(getMenuList)
+</script>
 <style lang="scss" scoped>
     .page-content {
         width: 100%;

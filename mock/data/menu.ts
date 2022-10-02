@@ -1,0 +1,227 @@
+export const menu: Menu[] = [
+    {
+        id: '9999',
+        pid: '0',
+        name: '系统设置',
+        icon: 'setting',
+        path: '/system',
+        children: [
+            {
+                id: '9999-1',
+                pid: '9999',
+                name: '用户管理',
+                path: '/system/user',
+            },
+        ],
+    },
+    {
+        id: '9998',
+        pid: '0',
+        name: '功能',
+        icon: 'function',
+        path: '/function',
+        children: [
+            {
+                id: '9998-1',
+                pid: '9998',
+                name: '消息提示',
+                path: '/function/message',
+            },
+            {
+                id: '9998-2',
+                pid: '9998',
+                name: '加载',
+                path: '/function/loading',
+            },
+            {
+                id: '9998-3',
+                pid: '9998',
+                name: '水印',
+                path: '/function/waterMarker',
+            },
+        ],
+    },
+    {
+        id: '4',
+        pid: '0',
+        name: '组件',
+        icon: 'components',
+        path: '/componentPage',
+        children: [
+            {
+                id: '43',
+                pid: '4',
+                name: '图标',
+                path: '/componentPage/icons',
+            },
+            {
+                id: '41',
+                pid: '4',
+                name: '表格',
+                path: '/componentPage/table',
+            },
+            {
+                id: '42',
+                pid: '4',
+                name: '表单',
+                path: '/componentPage/form',
+            },
+            {
+                id: '44',
+                pid: '4',
+                name: '数字动画',
+                path: '/componentPage/countTo',
+            },
+            {
+                id: '45',
+                pid: '4',
+                name: 'Ant标签页',
+                path: '/componentPage/antTabs',
+            },
+        ],
+    },
+    {
+        id: '5',
+        pid: '0',
+        name: '多级菜单',
+        path: '/nested',
+        icon: 'nested',
+        children: [
+            {
+                id: '51',
+                pid: '5',
+                name: '菜单1',
+                path: '/nested/menu1',
+                children: [
+                    {
+                        id: '511',
+                        pid: '51',
+                        name: '菜单1-1',
+                        path: '/nested/menu1/menu1-1',
+                    },
+                    {
+                        id: '512',
+                        pid: '51',
+                        name: '菜单1-2',
+                        path: '/nested/menu1/menu1-2',
+                        children: [
+                            {
+                                id: '5121',
+                                pid: '512',
+                                name: '菜单1-2-1',
+                                path: '/nested/menu1/menu1-2/menu1-2-1',
+                            },
+                            {
+                                id: '5122',
+                                pid: '512',
+                                name: '菜单1-2-2',
+                                path: '/nested/menu1/menu1-2/menu1-2-2',
+                            },
+                        ],
+                    },
+                    {
+                        id: '513',
+                        pid: '51',
+                        name: '菜单1-3',
+                        path: '/nested/menu1/menu1-3',
+                    },
+                ],
+            },
+            {
+                id: '52',
+                pid: '5',
+                name: '菜单2',
+                path: '/nested/menu2',
+            },
+        ],
+    },
+    {
+        id: '9',
+        pid: '0',
+        name: 'Echarts图表',
+        icon: 'echarts',
+        path: '/echarts',
+        children: [
+            {
+                id: '93',
+                pid: '9',
+                name: '平行坐标系',
+                path: '/echarts/parallel',
+            },
+            {
+                id: '91',
+                pid: '9',
+                name: '折线图',
+                path: '/echarts/line',
+            },
+            {
+                id: '92',
+                pid: '9',
+                name: '饼图',
+                path: '/echarts/pie',
+            },
+        ],
+    },
+    {
+        id: '8',
+        pid: '0',
+        name: '编辑器',
+        icon: 'editor',
+        path: '/editor',
+        children: [
+            {
+                id: '81',
+                pid: '8',
+                name: 'markDown编辑器',
+                path: '/editor/mdEditor',
+            },
+            {
+                id: '82',
+                pid: '8',
+                name: 'markDown预览',
+                path: '/editor/mdPreview',
+            },
+            {
+                id: '83',
+                pid: '8',
+                name: 'wangEditor富文本',
+                path: '/editor/wangEditor',
+            },
+            {
+                id: '84',
+                pid: '8',
+                name: '代码编辑器',
+                path: '/editor/codeEditor',
+            },
+        ],
+    },
+    {
+        id: '11',
+        pid: '0',
+        name: '自定义指令',
+        path: '/directives',
+        icon: 'directive',
+        children: [
+            {
+                id: '111',
+                pid: '11',
+                name: '拖拽指令',
+                path: '/directives/dragDirect',
+            },
+            {
+                id: '112',
+                pid: '12',
+                name: '水波纹',
+                path: '/directives/waves',
+            },
+        ],
+    },
+    {
+        id: '12',
+        pid: '0',
+        name: '引导页',
+        icon: 'guide',
+        path: '/guide',
+        sort: 100,
+    },
+]

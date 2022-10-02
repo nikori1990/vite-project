@@ -22,6 +22,7 @@
     "dependencies": {
         "@element-plus/icons-vue": "^2.0.9",
         "animate.css": "^4.1.1",
+        "axios": "^0.27.2",
         "element-plus": "^2.2.17",
         "gsap": "^3.11.2",
         "normalize.css": "^8.0.1",
@@ -52,6 +53,7 @@
         "is-ci": "^3.0.1",
         "ityped": "^1.0.3",
         "lint-staged": "^13.0.3",
+        "mockjs": "^1.1.0",
         "naive-ui": "^2.33.3",
         "postcss": "^8.4.16",
         "postcss-html": "^1.5.0",
@@ -74,10 +76,12 @@
         "unplugin-icons": "^0.14.11",
         "unplugin-vue-components": "^0.22.7",
         "vite": "^3.1.0",
+        "vite-plugin-mock": "^2.9.6",
         "vite-plugin-pages": "^0.26.0",
         "vite-plugin-vue-layouts": "^0.7.0",
         "vite-plugin-windicss": "^1.8.8",
         "vue-eslint-parser": "^9.1.0",
+        "vue-request": "2.0.0-rc.4",
         "vue-tsc": "^0.40.4",
         "webpack": "^5.74.0",
         "windicss": "^3.5.6"

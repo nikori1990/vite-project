@@ -21,7 +21,11 @@ import ElementPlus from 'unplugin-element-plus/vite'
 
 import WindiCSS from 'vite-plugin-windicss'
 
-// import css from './vite/css'
+import css from './vite/css'
+
+import { viteMockServe } from 'vite-plugin-mock'
+
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, ssrBuild }) => {
@@ -81,7 +85,9 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
                     IconsResolver({
                         enabledCollections: ['ep'],
                     }),
-                    ElementPlusResolver(),
+                    ElementPlusResolver({
+                        importStyle: 'sass',
+                    }),
                     NaiveUiResolver(),
                 ],
                 dts: 'src/components.d.ts',
@@ -92,12 +98,24 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
             ElementPlus({
                 useSource: true,
             }),
+            viteMockServe({
+                // ignore: /^\_/,
+                mockPath: 'mock',
+                localEnabled: !isBuild,
+                prodEnabled: isBuild,
+                //  这样可以控制关闭mock的时候不让mock打包到最终代码内
+                injectCode: ` import { setupProdMockServer } from './mockProdServer';
+                    setupProdMockServer(); `,
+                injectFile: resolve('src/main.ts'),
+                logger: true,
+            }),
         ],
         resolve: {
             alias: {
-                '@': fileURLToPath(new URL('./src', import.meta.url)), // 引用别名
+                // '@': fileURLToPath(new URL('./src', import.meta.url)), // 引用别名
+                '@': resolve(__dirname, 'src'), // 引用别名
             },
         },
-        // css,
+        css,
     }
 })

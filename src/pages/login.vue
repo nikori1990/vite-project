@@ -27,18 +27,19 @@
                         </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-input v-model="form.password" placeholder="请输入密码">
+                        <el-input
+                            type="password"
+                            show-password
+                            v-model="form.password"
+                            placeholder="请输入密码"
+                        >
                             <template #prefix>
                                 <el-icon><i-ep-lock /></el-icon>
                             </template>
                         </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button
-                            class="w-[250px] bg-indigo-500 rounded"
-                            type="primary"
-                            @click="onSubmit"
-                        >
+                        <el-button class="w-[250px]" type="primary" @click="onSubmit">
                             登录
                         </el-button>
                     </el-form-item>
