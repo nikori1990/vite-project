@@ -20,7 +20,7 @@ class RequestHttp {
 
     private init() {
         this.interceptorsRequest()
-        // this.interceptorsResponse()
+        this.interceptorsResponse()
     }
 
     private interceptorsRequest() {
@@ -42,6 +42,53 @@ class RequestHttp {
         //     },
         //     (error: AxiosError) => Promise.reject(error)
         // )
+    }
+
+    private interceptorsResponse() {
+        /**
+         * @description 响应拦截器
+         *  服务器换返回信息 -> [拦截统一处理] -> 客户端JS获取到信息
+         */
+        this.service.interceptors.response.use(
+            async (response: AxiosResponse) => {
+                // 每次请求之后设置默认显式 loading
+                // this.showLoading = IS_SHOW_LOADING
+                const { data, config } = response
+                // * 在请求结束后，移除本次请求
+                // axiosCanceler.removePending(config)
+                // tryHideFullScreenLoading()
+                //  token失效（code === 401）
+                // if (data.code === ResultEnum.OVERDUE) {
+                //     ElMessage.error(data.msg)
+                //     const userStore = useUserStore()
+                //     await userStore.resetToken()
+                //     router.replace({ name: 'login' })
+                //     return Promise.reject(data)
+                // }
+                // * 全局错误信息拦截
+                // if (data.code !== ResultEnum.SUCCESS) {
+                //     ElMessage.error(data.msg)
+                //     return Promise.reject(data)
+                // }
+                // * 成功请求
+                return Promise.resolve(data)
+            }
+            // (error: AxiosError) => {
+            //     const { response } = error
+            //     tryHideFullScreenLoading()
+            //     // 每次请求之后设置默认显式 loading
+            //     this.showLoading = IS_SHOW_LOADING
+            //     // 根据响应的错误状态码，做不同的处理
+            //     if (response) {
+            //         return checkStatus(response.status)
+            //     }
+            //     // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
+            //     if (!window.navigator.onLine) {
+            //         return router.replace({ path: '/500' })
+            //     }
+            //     return Promise.reject(error)
+            // }
+        )
     }
 
     // * 常用请求方法封装

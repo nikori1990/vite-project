@@ -2,7 +2,9 @@
  * @type {import('vite').UserConfig}
  */
 
-import { fileURLToPath, URL } from 'node:url'
+import { resolve } from 'path'
+
+// import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -25,7 +27,7 @@ import css from './vite/css'
 
 import { viteMockServe } from 'vite-plugin-mock'
 
-import { resolve } from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, ssrBuild }) => {
@@ -108,6 +110,12 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
                     setupProdMockServer(); `,
                 injectFile: resolve('src/main.ts'),
                 logger: true,
+            }),
+            createSvgIconsPlugin({
+                // 指定要缓存的文件夹
+                iconDirs: [resolve(process.cwd(), 'src/icons')],
+                // 指定symbolId格式
+                symbolId: 'icon-[dir]-[name]',
             }),
         ],
         resolve: {

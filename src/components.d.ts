@@ -28,13 +28,17 @@ declare module '@vue/runtime-core' {
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    IEpLocation: typeof import('~icons/ep/location')['default']
     IEpLock: typeof import('~icons/ep/lock')['default']
+    IEpMenu: typeof import('~icons/ep/menu')['default']
     IEpUser: typeof import('~icons/ep/user')['default']
     Login: typeof import('./components/login.vue')['default']
     Menu: typeof import('./components/Menu.vue')['default']
+    MenuItem: typeof import('./components/MenuItem.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     Reg: typeof import('./components/reg.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
   }
 }
