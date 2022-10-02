@@ -4,11 +4,15 @@
             <div class="logo">
                 <h1 class="logo-img">LOGO</h1>
             </div>
+            <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+                <el-radio-button :label="false">expand</el-radio-button>
+                <el-radio-button :label="true">collapse</el-radio-button>
+            </el-radio-group>
         </el-header>
 
         <el-container class="layout-main">
-            <el-aside width="220px" class="layout-aside">
-                <Menu />
+            <el-aside :class="asideClass" class="h-full">
+                <Menu :collapse="isCollapse" />
             </el-aside>
 
             <el-container class="page">
@@ -23,6 +27,16 @@
         </el-container>
     </el-container>
 </template>
+
+<script setup lang="ts">
+    const isCollapse = ref(false)
+    const asideClass = computed(() => {
+        if (isCollapse.value) {
+            return 'layout-aside-collapse'
+        }
+        return 'layout-aside'
+    })
+</script>
 
 <style lang="scss" scoped>
     .common-layout {
@@ -51,8 +65,13 @@
     }
 
     .layout-aside {
+        width: 220px;
         height: 100%;
-        background: #ddd;
+    }
+
+    .layout-aside-collapse {
+        width: 60px;
+        height: 100%;
     }
 
     .layout-main {

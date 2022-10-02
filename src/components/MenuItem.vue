@@ -7,7 +7,12 @@
             <span>{{ menu.name }}</span>
         </template>
 
-        <MenuItem v-for="subMenu in menu?.children" :key="subMenu.id" :menu="subMenu" />
+        <MenuItem
+            v-for="subMenu in menu?.children"
+            :key="subMenu.id"
+            :menu="subMenu"
+            :collapse="collapse"
+        />
     </el-sub-menu>
     <el-menu-item v-else :index="menu.path">
         <!-- <el-icon><component :is="`${menu.icon}`" /></el-icon> -->
@@ -21,6 +26,7 @@
 <script setup lang="ts">
     type Props = {
         menu: Menu
+        collapse?: boolean
     }
     defineProps<Props>()
 </script>
