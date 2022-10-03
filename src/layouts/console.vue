@@ -4,7 +4,7 @@
             <div class="logo">
                 <h1 class="logo-img">LOGO</h1>
             </div>
-            <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+            <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
                 <el-radio-button :label="false">expand</el-radio-button>
                 <el-radio-button :label="true">collapse</el-radio-button>
             </el-radio-group>
@@ -16,11 +16,17 @@
             </el-aside>
 
             <el-container class="page">
-                <div class="page-tags">
+                <!-- <div class="page-tags">
                     <el-tag class="tag" v-for="item in 4" :key="item">{{ item }}</el-tag>
-                </div>
+                </div> -->
+                <Tab />
                 <el-main class="page-main">
-                    <router-view />
+                    <router-view v-slot="{ Component }">
+                        <keep-alive v-if="keepAlive">
+                            <component :is="Component"></component>
+                        </keep-alive>
+                        <component :is="Component" v-else />
+                    </router-view>
                 </el-main>
                 <el-footer class="layout-footer">Footer</el-footer>
             </el-container>
@@ -36,6 +42,10 @@
         }
         return 'layout-aside'
     })
+    // const keepAlive = ref(true)
+
+    const { meta } = useRoute()
+    const keepAlive = toRef(meta, 'keepAlive')
 </script>
 
 <style lang="scss" scoped>
@@ -67,11 +77,13 @@
     .layout-aside {
         width: 220px;
         height: 100%;
+        border-right: 1px solid var(--el-border-color-light);
     }
 
     .layout-aside-collapse {
         width: 60px;
         height: 100%;
+        border-right: 1px solid var(--el-border-color-light);
     }
 
     .layout-main {
@@ -82,7 +94,7 @@
     .page-main {
         display: flex;
         padding: 15px;
-        background: #f3f7fb;
+        background: #f3f3f3;
     }
 
     .page-tags {
@@ -90,7 +102,6 @@
         width: 100%;
         height: 40px;
         padding: 8px 15px;
-        border-bottom: 1px solid var(--el-border-color);
         box-sizing: border-box;
         align-items: center;
 

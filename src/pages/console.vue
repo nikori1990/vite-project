@@ -1,6 +1,6 @@
 <template>
     <div class="page-content">
-        <div class="card" v-for="item in 1000" :key="item">
+        <div class="card" v-for="item in 100" :key="item">
             <h3>{{ item }}</h3>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
     <el-sub-menu v-if="menu?.children?.length" :index="menu.path">
         <template #title>
-            <el-icon>
+            <el-icon v-if="menu.icon">
                 <svg-icon :icon-class="menu.icon"></svg-icon>
             </el-icon>
             <span>{{ menu.name }}</span>
@@ -14,9 +14,9 @@
             :collapse="collapse"
         />
     </el-sub-menu>
-    <el-menu-item v-else :index="menu.path">
+    <el-menu-item v-else :index="menu.path" @click="handleClick(menu)">
         <!-- <el-icon><component :is="`${menu.icon}`" /></el-icon> -->
-        <el-icon>
+        <el-icon v-if="menu.icon">
             <svg-icon :icon-class="menu.icon"></svg-icon>
         </el-icon>
         <span>{{ menu.name }}</span>
@@ -24,11 +24,25 @@
 </template>
 
 <script setup lang="ts">
+    import { useTagViewStore } from '@/store/tagView'
+    const tagView = useTagViewStore()
+
     type Props = {
         menu: Menu
         collapse?: boolean
     }
     defineProps<Props>()
+
+    const router = useRouter()
+
+    const handleClick = (menu: Menu) => {
+        const tag: Tag = {
+            name: menu.name,
+            path: menu.path,
+        }
+        tagView.addTag(tag)
+        router.push({ path: menu.path })
+    }
 </script>
 
 <script lang="ts">

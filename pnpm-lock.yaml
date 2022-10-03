@@ -7,6 +7,7 @@ specifiers:
   '@iconify-json/ep': ^1.1.7
   '@ls-lint/ls-lint': ^1.11.2
   '@types/ityped': ^1.0.1
+  '@types/js-cookie': ^3.0.2
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
   '@vitejs/plugin-vue': ^3.1.0
@@ -32,6 +33,7 @@ specifiers:
   normalize.css: ^8.0.1
   nprogress: ^0.2.0
   pinia: ^2.0.22
+  pinia-persistedstate-plugin: ^0.1.0
   postcss: ^8.4.16
   postcss-html: ^1.5.0
   postcss-loader: ^7.0.1
@@ -68,6 +70,7 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': 2.0.9_vue@3.2.40
+  '@types/js-cookie': 3.0.2
   animate.css: 4.1.1
   axios: 0.27.2
   element-plus: 2.2.17_vue@3.2.40
@@ -102,6 +105,7 @@ devDependencies:
   lint-staged: 13.0.3
   mockjs: 1.1.0
   naive-ui: 2.33.3_vue@3.2.40
+  pinia-persistedstate-plugin: 0.1.0_bfjwoga25wxjazzogo7o372nwq
   postcss: 8.4.16
   postcss-html: 1.5.0
   postcss-loader: 7.0.1_qjv4cptcpse3y5hrjkrbb7drda
@@ -927,6 +931,9 @@ packages:
   /@types/ityped/1.0.1:
     resolution: {integrity: sha512-7K9uPwFcvYeqvA7IBCSC4YE1nkkubyyx2IhFnZp4P62OCX2zg07qMn04QVdbhGwfiIzJx+UFFLsjunRdim1/Tw==}
     dev: true
+
+  /@types/js-cookie/3.0.2:
+    resolution: {integrity: sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==}
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -5067,6 +5074,17 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /pinia-persistedstate-plugin/0.1.0_bfjwoga25wxjazzogo7o372nwq:
+    resolution: {integrity: sha512-ToKR/EJzhhXElQ5YL8PVVY4CqLJjywxszAJjOCgprjmIVkTrPBsEOY4b/ATOzHQc1TtuaJs/3MJuoCpA3pv8Ew==}
+    dependencies:
+      '@types/js-cookie': 3.0.2
+      pinia: 2.0.22_bfjwoga25wxjazzogo7o372nwq
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - typescript
+      - vue
+    dev: true
+
   /pinia/2.0.22_bfjwoga25wxjazzogo7o372nwq:
     resolution: {integrity: sha512-u+b8/BC+tmvo3ACbYO2w5NfxHWFOjvvw9DQnyT0dW8aUMCPRQT5QnfZ5R5W2MzZBMTeZRMQI7V/QFbafmM9QHw==}
     peerDependencies:
@@ -5083,7 +5101,6 @@ packages:
       typescript: 4.8.4
       vue: 3.2.40
       vue-demi: 0.13.11_vue@3.2.40
-    dev: false
 
   /pkg-types/0.3.5:
     resolution: {integrity: sha512-VkxCBFVgQhNHYk9subx+HOhZ4jzynH11ah63LZsprTKwPCWG9pfWBlkElWFbvkP9BVR0dP1jS9xPdhaHQNK74Q==}

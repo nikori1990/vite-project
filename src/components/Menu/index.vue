@@ -15,6 +15,7 @@
 <script setup lang="ts">
     import { useRequest } from 'vue-request'
     import { getMenuList } from '@/api/menu'
+
     interface Props {
         collapse: boolean
     }
