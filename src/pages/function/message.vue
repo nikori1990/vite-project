@@ -11,7 +11,7 @@
                 name: '功能',
                 path: '/function'
             }, {
-                name: '消息提示'
+                name: '消息提示',
                 path: '/message'
             }],
         }

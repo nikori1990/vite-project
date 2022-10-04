@@ -24,7 +24,9 @@
             >
                 <el-table-column type="index" width="50">
                     <template #header>
-                        <el-icon><i-ep-more /></el-icon>
+                        <el-icon>
+                            <i-ep-more />
+                        </el-icon>
                     </template>
                 </el-table-column>
                 <el-table-column prop="date" label="Date" width="180" />
@@ -44,7 +46,7 @@
                 name: '系统管理',
                 path: '/system'
             }, {
-                name: '用户管理'
+                name: '用户管理',
                 path: '/user'
             }],
         }

@@ -3,7 +3,28 @@
         "composite": true,
         "module": "ESNext",
         "moduleResolution": "Node",
-        "allowSyntheticDefaultImports": true
+        "jsx": "preserve",
+        "allowSyntheticDefaultImports": true,
+        "types": ["element-plus/global", "vite-plugin-vue-layouts/client", "naive-ui/volar"],
+        "typeRoots": ["./node_modules/@types/", "./types"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "#/*": ["types/*"]
+        },
+        "vueCompilerOptions": {
+            "experimentalDisableTemplateSupport": true
+        }
     },
-    "include": ["vite.config.ts", "./vite/css.ts"]
+    "include": [
+        "vite.config.ts",
+        "types/**/*.d.ts",
+        "types/**/*.ts",
+        "mock/*.ts",
+        "mock/**/*.ts",
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue"
+    ]
 }
