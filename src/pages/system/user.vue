@@ -20,8 +20,7 @@
                 :data="tableData"
                 table-layout="fixed"
                 :header-cell-style="headerCellStyle"
-                :border="true"
-            >
+                :border="true">
                 <el-table-column type="index" width="50">
                     <template #header>
                         <el-icon>

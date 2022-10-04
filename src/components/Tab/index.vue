@@ -6,14 +6,12 @@
         closable
         @tab-click="clickTab"
         @tab-remove="removeTab"
-        @tab-change="changeTab"
-    >
+        @tab-change="changeTab">
         <el-tab-pane
             v-for="item in tagList"
             :key="item.name"
             :label="item.name"
-            :name="item.name"
-        />
+            :name="item.name" />
     </el-tabs>
 </template>
 <script setup lang="ts">

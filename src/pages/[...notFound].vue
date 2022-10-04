@@ -49,8 +49,7 @@
         box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, var(--tw-shadow);
 
         --tw-shadow-color: 8, 145, 178;
-        --tw-shadow:
-            0 4px 6px -1px rgb(var(--tw-shadow-color) 0.1),
+        --tw-shadow: 0 4px 6px -1px rgb(var(--tw-shadow-color) 0.1),
             0 2px 4px -1px rgb(var(--tw-shadow-color) 0.06);
     }
 </style>

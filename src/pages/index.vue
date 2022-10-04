@@ -30,8 +30,7 @@
         </div>
         <transition
             enter-active-class="animate__animated animate__fadeIn"
-            leave-active-class="animate__animated animate__fadeOut"
-        >
+            leave-active-class="animate__animated animate__fadeOut">
             <div class="animate" v-show="flag"></div>
         </transition>
 
@@ -43,8 +42,7 @@
         <div class="wrap">
             <transition-group
                 enter-active-class="animate__animated animate__bounceIn"
-                leave-active-class="animate__animated animate__bounceOut"
-            >
+                leave-active-class="animate__animated animate__bounceOut">
                 <div class="item" v-for="item in list" :key="item"> {{ item }}</div>
             </transition-group>
         </div>

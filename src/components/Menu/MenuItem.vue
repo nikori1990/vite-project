@@ -11,8 +11,7 @@
             v-for="subMenu in menu?.children"
             :key="subMenu.id"
             :menu="subMenu"
-            :collapse="collapse"
-        />
+            :collapse="collapse" />
     </el-sub-menu>
     <el-menu-item v-else :index="menu.path" @click="handleClick(menu)">
         <!-- <el-icon><component :is="`${menu.icon}`" /></el-icon> -->

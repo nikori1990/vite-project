@@ -5,8 +5,7 @@
             @open="handleOpen"
             @close="handleClose"
             class="menu"
-            :collapse-transition="false"
-        >
+            :collapse-transition="false">
             <MenuItem v-for="menu in data" :key="menu.id" :menu="menu" :collapse="collapse" />
         </el-menu>
     </el-scrollbar>

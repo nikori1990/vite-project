@@ -49,7 +49,7 @@ module.exports = defineConfig({
             },
         ],
 
-        'prettier/prettier': 'error',
+        // 'prettier/prettier': 'error',
 
         // 禁止出现console
         'no-console': 'warn',

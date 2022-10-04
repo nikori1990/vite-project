@@ -8,6 +8,7 @@ specifiers:
   '@ls-lint/ls-lint': ^1.11.2
   '@types/ityped': ^1.0.1
   '@types/js-cookie': ^3.0.2
+  '@types/nprogress': ^0.2.0
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
   '@vitejs/plugin-vue': ^3.1.0
@@ -89,6 +90,7 @@ devDependencies:
   '@ls-lint/ls-lint': 1.11.2
   '@types/ityped': 1.0.1
   '@types/js-cookie': 3.0.2
+  '@types/nprogress': 0.2.0
   '@typescript-eslint/eslint-plugin': 5.39.0_xyciw6oqjoiiono4dhv3uhn5my
   '@typescript-eslint/parser': 5.39.0_ypn2ylkkyfa5i233caldtndbqa
   '@vitejs/plugin-vue': 3.1.2_vite@3.1.4+vue@3.2.40
@@ -988,6 +990,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/parse-json/4.0.0:

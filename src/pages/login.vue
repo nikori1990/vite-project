@@ -31,8 +31,7 @@
                             type="password"
                             show-password
                             v-model="form.password"
-                            placeholder="请输入密码"
-                        >
+                            placeholder="请输入密码">
                             <template #prefix>
                                 <el-icon><i-ep-lock /></el-icon>
                             </template>
