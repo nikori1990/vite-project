@@ -67,7 +67,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
                 ], // 自动导入vue和vue-router相关函数
 
                 dirs: ['src/composables'], // 自定义文件夹自动按需引入
-                dts: 'src/auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明
+                dts: 'types/auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明
 
                 // Auto import functions from Element Plus, e.g. ElMessage, ElMessageBox... (with style)
                 // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
@@ -92,7 +92,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
                     }),
                     NaiveUiResolver(),
                 ],
-                dts: 'src/components.d.ts',
+                dts: 'types/components.d.ts',
             }),
             Icons({
                 autoInstall: true,
