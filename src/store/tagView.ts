@@ -1,7 +1,6 @@
 import { tagsViewState } from './interface/tagView'
 
 import { TabPanelName } from 'element-plus'
-import { RouteMeta } from 'vue-router'
 
 export const useTagViewStore = defineStore('tagView', {
     state(): tagsViewState {
@@ -37,7 +36,7 @@ export const useTagViewStore = defineStore('tagView', {
                 }
             })
         },
-        setMeta(meta: RouteMeta) {
+        setMeta(meta: Meta) {
             this.meta = meta
         },
     },

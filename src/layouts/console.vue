@@ -56,14 +56,19 @@
     })
 
     const tagViewStore = useTagViewStore()
-
-    const { meta } = storeToRefs(tagViewStore)
+    const { meta } = tagViewStore
     // console.log('meta :>> ', meta)
 
     const route = useRoute()
 
     const initDataToStore = () => {
-        const { meta } = route
+        const routeMeta = route.meta
+
+        const meta: Meta = {
+            title: routeMeta.title as string,
+            breadcrumbList: routeMeta.breadcrumbList as Breadcrumb[],
+        }
+
         tagViewStore.setMeta(meta)
     }
 
