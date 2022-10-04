@@ -1,19 +1,19 @@
 <template>
-    <div>Message</div>
+    <div>父子组件传参</div>
 </template>
 <route>
     {
         meta: {
             layout: 'console',
             keepAlive: true,
-            title: '消息提示',
+            title: '父子组件传参',
             breadcrumbList: [{
-                name: '功能',
-                path: '/function'
+                name: 'study',
+                path: '/study'
             }, {
-                name: '消息提示'
-                path: '/message'
-            }],
+                name: '父子组件传参',
+                path: '/prop'
+            }]
         }
     }
 </route>

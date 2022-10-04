@@ -1,6 +1,6 @@
 <template>
     <el-tabs
-        v-model="tag"
+        v-model="meta.title"
         type="card"
         class="demo-tabs"
         closable
@@ -21,12 +21,12 @@
 
     import { useTagViewStore } from '@/store/tagView'
     const tagView = useTagViewStore()
-    const { tagList, tag } = storeToRefs(tagView)
+    const { tagList, meta } = storeToRefs(tagView)
 
     const router = useRouter()
 
     const clickTab = ({ paneName }: TabsPaneContext) => {
-        if (paneName === tag.value) {
+        if (paneName === meta.value.title) {
             return
         }
         tagList.value.forEach((tag) => {

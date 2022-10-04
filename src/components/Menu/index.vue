@@ -25,8 +25,6 @@
     // 请求接口 /api/get
     const { data, loading, run } = useRequest(getMenuList)
 
-    console.log('data', data)
-
     const handleOpen = (key: string, keyPath: string[]) => {
         console.log(key, keyPath)
     }

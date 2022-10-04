@@ -15,6 +15,33 @@ export const menu: Menu[] = [
         ],
     },
     {
+        id: '8888',
+        pid: '0',
+        name: '学习',
+        icon: 'function',
+        path: '/study',
+        children: [
+            {
+                id: '8888-1',
+                pid: '8888',
+                name: 'computed',
+                path: '/study/computed',
+            },
+            {
+                id: '8888-2',
+                pid: '8888',
+                name: 'watch',
+                path: '/study/watch',
+            },
+            {
+                id: '8888-3',
+                pid: '8888',
+                name: '父子组件传参',
+                path: '/study/prop',
+            },
+        ],
+    },
+    {
         id: '9998',
         pid: '0',
         name: '功能',
@@ -134,94 +161,5 @@ export const menu: Menu[] = [
                 path: '/nested/menu2',
             },
         ],
-    },
-    {
-        id: '9',
-        pid: '0',
-        name: 'Echarts图表',
-        icon: 'echarts',
-        path: '/echarts',
-        children: [
-            {
-                id: '93',
-                pid: '9',
-                name: '平行坐标系',
-                path: '/echarts/parallel',
-            },
-            {
-                id: '91',
-                pid: '9',
-                name: '折线图',
-                path: '/echarts/line',
-            },
-            {
-                id: '92',
-                pid: '9',
-                name: '饼图',
-                path: '/echarts/pie',
-            },
-        ],
-    },
-    {
-        id: '8',
-        pid: '0',
-        name: '编辑器',
-        icon: 'editor',
-        path: '/editor',
-        children: [
-            {
-                id: '81',
-                pid: '8',
-                name: 'markDown编辑器',
-                path: '/editor/mdEditor',
-            },
-            {
-                id: '82',
-                pid: '8',
-                name: 'markDown预览',
-                path: '/editor/mdPreview',
-            },
-            {
-                id: '83',
-                pid: '8',
-                name: 'wangEditor富文本',
-                path: '/editor/wangEditor',
-            },
-            {
-                id: '84',
-                pid: '8',
-                name: '代码编辑器',
-                path: '/editor/codeEditor',
-            },
-        ],
-    },
-    {
-        id: '11',
-        pid: '0',
-        name: '自定义指令',
-        path: '/directives',
-        icon: 'directive',
-        children: [
-            {
-                id: '111',
-                pid: '11',
-                name: '拖拽指令',
-                path: '/directives/dragDirect',
-            },
-            {
-                id: '112',
-                pid: '12',
-                name: '水波纹',
-                path: '/directives/waves',
-            },
-        ],
-    },
-    {
-        id: '12',
-        pid: '0',
-        name: '引导页',
-        icon: 'guide',
-        path: '/guide',
-        sort: 100,
     },
 ]

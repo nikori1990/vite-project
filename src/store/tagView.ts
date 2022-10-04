@@ -7,9 +7,13 @@ export const useTagViewStore = defineStore('tagView', {
         return {
             tag: '',
             tagList: [],
+            meta: { title: '', breadcrumbList: [], keepAlive: false },
         }
     },
     actions: {
+        setTag(tagName: string) {
+            this.tag = tagName
+        },
         addTag(tag: Tag) {
             if (this.tagList.every((item) => item.name !== tag.name)) {
                 this.tagList.push(tag)
@@ -31,6 +35,9 @@ export const useTagViewStore = defineStore('tagView', {
                     }
                 }
             })
+        },
+        setMeta(meta: Meta) {
+            this.meta = meta
         },
     },
 })

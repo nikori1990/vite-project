@@ -4,10 +4,20 @@
             <div class="logo">
                 <h1 class="logo-img">LOGO</h1>
             </div>
-            <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                <el-radio-button :label="false">expand</el-radio-button>
-                <el-radio-button :label="true">collapse</el-radio-button>
-            </el-radio-group>
+            <div class="collapse-box">
+                <el-icon v-show="!isCollapse" @click="isCollapse = !isCollapse">
+                    <i-ep-fold />
+                </el-icon>
+                <el-icon v-show="isCollapse" @click="isCollapse = !isCollapse">
+                    <i-ep-expand />
+                </el-icon>
+            </div>
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item v-for="(item, i) in meta.breadcrumbList" :key="i">
+                    {{ item.name }}
+                </el-breadcrumb-item>
+            </el-breadcrumb>
         </el-header>
 
         <el-container class="layout-main">
@@ -22,7 +32,7 @@
                 <Tab />
                 <el-main class="page-main">
                     <router-view v-slot="{ Component }">
-                        <keep-alive v-if="keepAlive">
+                        <keep-alive v-if="meta.keepAlive">
                             <component :is="Component"></component>
                         </keep-alive>
                         <component :is="Component" v-else />
@@ -35,6 +45,8 @@
 </template>
 
 <script setup lang="ts">
+    import { useTagViewStore } from '@/store/tagView'
+
     const isCollapse = ref(false)
     const asideClass = computed(() => {
         if (isCollapse.value) {
@@ -42,10 +54,26 @@
         }
         return 'layout-aside'
     })
-    // const keepAlive = ref(true)
 
-    const { meta } = useRoute()
-    const keepAlive = toRef(meta, 'keepAlive')
+    const tagViewStore = useTagViewStore()
+
+    const { meta } = storeToRefs(tagViewStore)
+    // console.log('meta :>> ', meta)
+
+    const route = useRoute()
+
+    const initDataToStore = () => {
+        const { meta } = route
+        tagViewStore.setMeta(meta)
+    }
+
+    watch(
+        () => [route.path],
+        () => {
+            initDataToStore()
+        },
+        { immediate: true }
+    )
 </script>
 
 <style lang="scss" scoped>
@@ -59,7 +87,7 @@
 
         // background: #fafafa;
         align-items: center;
-        border-bottom: 1px solid var(--el-border-color);
+        border-bottom: 1px solid var(--el-border-color-light);
 
         .logo {
             display: flex;
@@ -91,6 +119,19 @@
         overflow: auto;
     }
 
+    .collapse-box {
+        display: flex;
+        margin-right: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            color: var(--el-color-primary);
+        }
+    }
+
     .page-main {
         display: flex;
         padding: 15px;
@@ -112,6 +153,8 @@
     }
 
     .layout-footer {
-        background: green;
+        height: 40px;
+        color: #fff;
+        background: var(--el-color-primary);
     }
 </style>
