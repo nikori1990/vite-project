@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-    import { useTagViewStore } from '@/store/tagView'
-    const tagView = useTagViewStore()
+    import { usePageStore } from '@/store/pageStore'
+    const pageStore = usePageStore()
 
     type Props = {
         menu: Menu
@@ -33,20 +33,13 @@
     defineProps<Props>()
 
     const router = useRouter()
-
     const handleClick = (menu: Menu) => {
         const tag: Tag = {
             name: menu.name,
             path: menu.path,
         }
-        tagView.addTag(tag)
+        pageStore.addTag(tag)
         router.push({ path: menu.path })
-    }
-</script>
-
-<script lang="ts">
-    export default {
-        name: 'MenuItem',
     }
 </script>
 <style scoped></style>

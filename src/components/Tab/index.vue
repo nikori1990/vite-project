@@ -17,9 +17,9 @@
 <script setup lang="ts">
     import type { TabsPaneContext, TabPanelName } from 'element-plus'
 
-    import { useTagViewStore } from '@/store/tagView'
-    const tagView = useTagViewStore()
-    const { tagList, meta } = storeToRefs(tagView)
+    import { usePageStore } from '@/store/pageStore'
+    const pageStore = usePageStore()
+    const { tagList, meta } = storeToRefs(pageStore)
 
     const router = useRouter()
 
@@ -27,21 +27,21 @@
         if (paneName === meta.value.title) {
             return
         }
-        tagList.value.forEach((tag) => {
-            if (tag.name === paneName) {
-                router.push(tag.path)
+        tagList.value.forEach((item) => {
+            if (item.name === paneName) {
+                router.push(item.path)
             }
         })
     }
 
     const removeTab = (tabName: TabPanelName) => {
-        tagView.removeTag(tabName)
+        pageStore.removeTag(tabName)
     }
 
     const changeTab = (tabName: TabPanelName) => {
-        tagList.value.forEach((tag) => {
-            if (tag.name === tabName) {
-                router.push(tag.path)
+        tagList.value.forEach((item) => {
+            if (item.name === tabName) {
+                router.push(item.path)
             }
         })
     }

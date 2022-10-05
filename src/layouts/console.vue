@@ -12,12 +12,7 @@
                     <i-ep-expand />
                 </el-icon>
             </div>
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item v-for="(item, i) in meta.breadcrumbList" :key="i">
-                    {{ item.name }}
-                </el-breadcrumb-item>
-            </el-breadcrumb>
+            <Breadcrumb :meta="meta" />
         </el-header>
 
         <el-container class="layout-main">
@@ -26,9 +21,6 @@
             </el-aside>
 
             <el-container class="page">
-                <!-- <div class="page-tags">
-                    <el-tag class="tag" v-for="item in 4" :key="item">{{ item }}</el-tag>
-                </div> -->
                 <Tab />
                 <el-main class="page-main">
                     <router-view v-slot="{ Component }">
@@ -45,7 +37,8 @@
 </template>
 
 <script setup lang="ts">
-    import { useTagViewStore } from '@/store/tagView'
+    import { usePageStore } from '@/store/pageStore'
+    import { RouteMeta } from 'vue-router'
 
     const isCollapse = ref(false)
     const asideClass = computed(() => {
@@ -55,27 +48,19 @@
         return 'layout-aside'
     })
 
-    const tagViewStore = useTagViewStore()
-    const { meta } = tagViewStore
-    // console.log('meta :>> ', meta)
+    const pageStore = usePageStore()
+    const { meta } = storeToRefs(pageStore)
 
     const route = useRoute()
 
-    const initDataToStore = () => {
-        const routeMeta = route.meta
-
-        const meta: Meta = {
-            title: routeMeta.title as string,
-            breadcrumbList: routeMeta.breadcrumbList as Breadcrumb[],
-        }
-
-        tagViewStore.setMeta(meta)
+    const initDataToPageStore = (meta: RouteMeta) => {
+        pageStore.setMeta(meta as Meta)
     }
 
     watch(
-        () => [route.path],
-        () => {
-            initDataToStore()
+        () => route.meta,
+        (meta) => {
+            initDataToPageStore(meta)
         },
         { immediate: true }
     )
