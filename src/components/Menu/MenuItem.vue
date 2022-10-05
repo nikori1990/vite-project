@@ -37,6 +37,7 @@
         const tag: Tag = {
             name: menu.name,
             path: menu.path,
+            closable: true,
         }
         pageStore.addTag(tag)
         router.push({ path: menu.path })

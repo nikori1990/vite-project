@@ -2,7 +2,7 @@
     <el-container class="common-layout">
         <el-header class="layout-header">
             <div class="logo">
-                <h1 class="logo-img">LOGO</h1>
+                <a class="logo-img" href="/">By-Admin</a>
             </div>
             <div class="collapse-box">
                 <el-icon v-show="!isCollapse" @click="isCollapse = !isCollapse">
@@ -87,7 +87,10 @@
 
             .logo-img {
                 margin: 0;
-                color: blue;
+                font-size: 24px;
+                font-weight: bold;
+                color: var(--el-color-primary);
+                cursor: pointer;
             }
         }
     }

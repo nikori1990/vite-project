@@ -3,12 +3,12 @@
         v-model="meta.title"
         type="card"
         class="demo-tabs"
-        closable
         @tab-click="clickTab"
         @tab-remove="removeTab"
         @tab-change="changeTab">
         <el-tab-pane
             v-for="item in tagList"
+            :closable="item?.closable"
             :key="item.name"
             :label="item.name"
             :name="item.name" />
@@ -22,6 +22,16 @@
     const { tagList, meta } = storeToRefs(pageStore)
 
     const router = useRouter()
+
+    // const affixTags: Tag[] = [
+    //     {
+    //         name: '首页',
+    //         path: '/',
+    //         closable: false,
+    //     },
+    // ]
+
+    // tagList.value.unshift(...affixTags)
 
     const clickTab = ({ paneName }: TabsPaneContext) => {
         if (paneName === meta.value.title) {

@@ -2,10 +2,16 @@ import { PageState } from './interface/pageState'
 
 import { TabPanelName } from 'element-plus'
 
+const homeTag: Tag = {
+    name: '首页',
+    path: '/',
+    closable: false,
+}
+
 export const usePageStore = defineStore('pageStore', {
     state(): PageState {
         return {
-            tagList: <Tag[]>[],
+            tagList: <Tag[]>[homeTag],
             meta: <Meta>{},
         }
     },
@@ -20,13 +26,7 @@ export const usePageStore = defineStore('pageStore', {
                 if (item.name === tagName) {
                     this.tagList.splice(index, 1)
                     if (this.meta.title === tagName) {
-                        if (index > 0) {
-                            this.meta.title = this.tagList[index - 1].name
-                        } else if (this.tagList.length > 0) {
-                            this.meta.title = this.tagList[0].name
-                        } else {
-                            this.meta.title = ''
-                        }
+                        this.meta.title = this.tagList[index - 1].name
                     }
                 }
             })
