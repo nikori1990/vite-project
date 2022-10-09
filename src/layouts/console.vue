@@ -146,6 +146,8 @@
     }
 
     .layout-footer {
+        display: flex;
+        align-items: center;
         height: 40px;
         color: #fff;
         background: var(--el-color-primary);

@@ -19,10 +19,10 @@
         collapse: boolean
     }
 
-    const props = withDefaults(defineProps<Props>(), { collapse: false })
+    withDefaults(defineProps<Props>(), { collapse: false })
 
     // 请求接口 /api/get
-    const { data, loading, run } = useRequest(getMenuList)
+    const { data } = useRequest(getMenuList)
 
     const handleOpen = (key: string, keyPath: string[]) => {
         console.log(key, keyPath)

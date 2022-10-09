@@ -20,14 +20,17 @@
         "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-config.cjs"
     },
     "dependencies": {
+        "algoliasearch": "^4.14.2",
         "animate.css": "^4.1.1",
         "axios": "^0.27.2",
         "gsap": "^3.11.2",
+        "instantsearch.css": "^7.4.5",
         "js-cookie": "^3.0.1",
         "normalize.css": "^8.0.1",
         "nprogress": "^0.2.0",
         "pinia": "^2.0.22",
         "vue": "^3.2.37",
+        "vue-instantsearch": "^4.6.0",
         "vue-router": "^4.1.5"
     },
     "devDependencies": {

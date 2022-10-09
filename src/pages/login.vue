@@ -4,9 +4,7 @@
             <div class="left">
                 <div>
                     <div class="welcome">欢迎光临</div>
-                    <div class="text-light-50">
-                        此站点是《vue3 vite 实战商城后台开发》视频课程的演示地址
-                    </div>
+                    <div class="text-light-50">《vue3 vite 实战商城后台开发》</div>
                 </div>
             </div>
         </el-col>
@@ -18,15 +16,15 @@
                     <span>账号密码登录</span>
                     <span class="h-[1px] w-16 bg-gray-200"></span>
                 </div>
-                <el-form :model="form" class="w-[250px]">
-                    <el-form-item>
+                <el-form :model="form" class="w-[250px]" ref="formRef" :rules="rules">
+                    <el-form-item prop="username">
                         <el-input v-model="form.username" placeholder="请输入用户名">
                             <template #prefix>
                                 <el-icon><i-ep-user /></el-icon>
                             </template>
                         </el-input>
                     </el-form-item>
-                    <el-form-item>
+                    <el-form-item prop="password">
                         <el-input
                             type="password"
                             show-password
@@ -38,7 +36,7 @@
                         </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="w-[250px]" type="primary" @click="onSubmit">
+                        <el-button class="w-[250px]" type="primary" @click="onSubmit(formRef)">
                             登录
                         </el-button>
                     </el-form-item>
@@ -55,13 +53,58 @@
     }
 </route>
 <script setup lang="ts">
-    const form = reactive({
+    import type { FormInstance, FormRules } from 'element-plus'
+    import { login } from '@/api/user'
+    import { useUserStore } from '@/store/userStore'
+
+    const form: LoginData = reactive({
         username: 'admin',
-        password: 'admin111',
+        password: '123456',
     })
 
-    const onSubmit = () => {
-        console.log('form', form)
+    const formRef = ref<FormInstance>()
+
+    const rules = reactive<FormRules>({
+        username: [{ required: true, message: 'Please input user name', trigger: 'blur' }],
+        password: [
+            {
+                required: true,
+                message: 'Please input password',
+                trigger: 'blur',
+            },
+        ],
+    })
+
+    // const { data, error, run } = useRequest(login, {
+    //     manual: true,
+    // })
+
+    const userStore = useUserStore()
+    const router = useRouter()
+
+    if (userStore.token !== '') {
+        router.push('/')
+    }
+
+    const onSubmit = async (formEl: FormInstance | undefined) => {
+        if (!formEl) {
+            return
+        }
+        await formEl.validate((valid, fields) => {
+            if (valid) {
+                // run(form)
+                login(form).then((res: any) => {
+                    console.log('res :>> ', res)
+                    if (res.code === 200 && res.msg === 'SUCCESS') {
+                        const { token } = res.data
+                        console.log('token :>> ', token)
+                        userStore.setToken(token)
+                    }
+                })
+            } else {
+                console.log('error submit!', fields)
+            }
+        })
     }
 </script>
 <style lang="scss" scoped>
