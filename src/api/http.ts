@@ -29,19 +29,13 @@ class RequestHttp {
          * 客户端发送请求 -> [请求拦截器] -> 服务器
          * token校验(JWT) : 接受服务器返回的token,存储到vuex/本地储存当中
          */
-        // this.service.interceptors.request.use(
-        //     (config: CCRequestConfig) => {
-        //         // console.log(config && config.showLoading)
-        //         // 应用加载文案
-        //         this.showLoading = config.showLoading ?? IS_SHOW_LOADING
-        //         // * 将当前请求添加到 pending 中
-        //         axiosCanceler.addPending(config)
-        //         this.showLoading && showFullScreenLoading()
-        //         const token = getToken()
-        //         return { ...config, headers: { token: token || '', lang: getLang() } }
-        //     },
-        //     (error: AxiosError) => Promise.reject(error)
-        // )
+        this.service.interceptors.request.use(
+            (config: AxiosRequestConfig) => {
+                console.log('config', config)
+                return { ...config }
+            },
+            (error: AxiosError) => Promise.reject(error)
+        )
     }
 
     private interceptorsResponse() {

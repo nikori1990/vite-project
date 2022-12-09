@@ -16,31 +16,33 @@
                     <span>账号密码登录</span>
                     <span class="h-[1px] w-16 bg-gray-200"></span>
                 </div>
-                <el-form :model="form" class="w-[250px]" ref="formRef" :rules="rules">
-                    <el-form-item prop="username">
-                        <el-input v-model="form.username" placeholder="请输入用户名">
-                            <template #prefix>
-                                <el-icon><i-ep-user /></el-icon>
-                            </template>
-                        </el-input>
-                    </el-form-item>
-                    <el-form-item prop="password">
-                        <el-input
-                            type="password"
-                            show-password
-                            v-model="form.password"
-                            placeholder="请输入密码">
-                            <template #prefix>
-                                <el-icon><i-ep-lock /></el-icon>
-                            </template>
-                        </el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button class="w-[250px]" type="primary" @click="onSubmit(formRef)">
-                            登录
-                        </el-button>
-                    </el-form-item>
-                </el-form>
+                <n-spin :show="loading">
+                    <el-form :model="form" class="w-[250px]" ref="formRef" :rules="rules">
+                        <el-form-item prop="username">
+                            <el-input v-model="form.username" placeholder="请输入用户名">
+                                <template #prefix>
+                                    <el-icon><i-ep-user /></el-icon>
+                                </template>
+                            </el-input>
+                        </el-form-item>
+                        <el-form-item prop="password">
+                            <el-input
+                                type="password"
+                                show-password
+                                v-model="form.password"
+                                placeholder="请输入密码">
+                                <template #prefix>
+                                    <el-icon><i-ep-lock /></el-icon>
+                                </template>
+                            </el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button class="w-[250px]" type="primary" @click="onSubmit(formRef)">
+                                登录
+                            </el-button>
+                        </el-form-item>
+                    </el-form>
+                </n-spin>
             </div>
         </el-col>
     </el-row>
@@ -56,6 +58,7 @@
     import type { FormInstance, FormRules } from 'element-plus'
     import { login } from '@/api/user'
     import { useUserStore } from '@/store/userStore'
+    import { useRequest } from 'vue-request'
 
     const form: LoginData = reactive({
         username: 'admin',
@@ -75,16 +78,12 @@
         ],
     })
 
-    // const { data, error, run } = useRequest(login, {
-    //     manual: true,
-    // })
+    const { runAsync, loading } = useRequest(login, {
+        manual: true,
+    })
 
     const userStore = useUserStore()
     const router = useRouter()
-
-    if (userStore.token !== '') {
-        router.push('/')
-    }
 
     const onSubmit = async (formEl: FormInstance | undefined) => {
         if (!formEl) {
@@ -92,15 +91,22 @@
         }
         await formEl.validate((valid, fields) => {
             if (valid) {
-                // run(form)
-                login(form).then((res: any) => {
-                    console.log('res :>> ', res)
+                runAsync(form).then((res: any) => {
                     if (res.code === 200 && res.msg === 'SUCCESS') {
                         const { token } = res.data
                         console.log('token :>> ', token)
                         userStore.setToken(token)
+                        router.push('/')
                     }
                 })
+                // login(form).then((res: any) => {
+                //     console.log('res :>> ', res)
+                //     if (res.code === 200 && res.msg === 'SUCCESS') {
+                //         const { token } = res.data
+                //         console.log('token :>> ', token)
+                //         userStore.setToken(token)
+                //     }
+                // })
             } else {
                 console.log('error submit!', fields)
             }

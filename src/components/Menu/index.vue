@@ -5,6 +5,8 @@
             @open="handleOpen"
             @close="handleClose"
             class="menu"
+            router
+            :default-active="route.path"
             :collapse-transition="false">
             <MenuItem v-for="menu in data" :key="menu.id" :menu="menu" :collapse="collapse" />
         </el-menu>
@@ -18,6 +20,8 @@
     interface Props {
         collapse: boolean
     }
+
+    const route = useRoute()
 
     withDefaults(defineProps<Props>(), { collapse: false })
 

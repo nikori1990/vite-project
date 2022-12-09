@@ -29,6 +29,15 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         server: {
             port: 3000,
             strictPort: true,
+            proxy: {
+                '/admin': {
+                    target: 'http://localhost:8000',
+                    changeOrigin: true,
+                    // 这里的 admin是 axios 的 baseUrl
+                    rewrite: (path) => path.replace(/^\/admin/, ''),
+                },
+            },
+            // cors: true,
         },
         plugins: [...setupPlugins(isBuild), WindiCSS()],
         resolve: {

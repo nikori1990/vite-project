@@ -45,6 +45,7 @@ declare module '@vue/runtime-core' {
     Menu: typeof import('./../src/components/Menu/index.vue')['default']
     MenuItem: typeof import('./../src/components/Menu/MenuItem.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NSpin: typeof import('naive-ui')['NSpin']
     Reg: typeof import('./../src/components/reg.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
