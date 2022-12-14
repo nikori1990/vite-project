@@ -91,8 +91,7 @@
         }
         await formEl.validate((valid, fields) => {
             if (valid) {
-                run(form).then((res: any) => {
-                    const token = res.data
+                run(form).then((token: any) => {
                     console.log('token :>> ', token)
                     userStore.setToken(token)
                     router.push('/')
