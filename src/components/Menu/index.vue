@@ -26,7 +26,7 @@
     withDefaults(defineProps<Props>(), { collapse: false })
 
     // 请求接口 /api/get
-    const { data } = useRequest(getMenuList)
+    const { data, run, loading } = useRequest(getMenuList)
 
     const handleOpen = (key: string, keyPath: string[]) => {
         console.log(key, keyPath)

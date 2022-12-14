@@ -78,7 +78,7 @@
         ],
     })
 
-    const { runAsync, loading } = useRequest(login, {
+    const { run, loading } = useRequest(login, {
         manual: true,
     })
 
@@ -91,13 +91,11 @@
         }
         await formEl.validate((valid, fields) => {
             if (valid) {
-                runAsync(form).then((res: any) => {
-                    if (res.code === 200 && res.msg === 'SUCCESS') {
-                        const { token } = res.data
-                        console.log('token :>> ', token)
-                        userStore.setToken(token)
-                        router.push('/')
-                    }
+                run(form).then((res: any) => {
+                    const token = res.data
+                    console.log('token :>> ', token)
+                    userStore.setToken(token)
+                    router.push('/')
                 })
                 // login(form).then((res: any) => {
                 //     console.log('res :>> ', res)

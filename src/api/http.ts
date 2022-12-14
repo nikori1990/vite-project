@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { useUserStore } from '@/store/userStore'
 
 const config = {
     // 默认地址
@@ -31,8 +32,10 @@ class RequestHttp {
          */
         this.service.interceptors.request.use(
             (config: AxiosRequestConfig) => {
-                console.log('config', config)
-                return { ...config }
+                // console.log('config', config)
+                const { token } = useUserStore()
+                // console.log('token', token)
+                return { ...config, headers: { Authorization: 'Bearer ' + token || '' } }
             },
             (error: AxiosError) => Promise.reject(error)
         )
@@ -65,7 +68,7 @@ class RequestHttp {
                 //     return Promise.reject(data)
                 // }
                 // * 成功请求
-                return Promise.resolve(data)
+                return Promise.resolve(data.data)
             }
             // (error: AxiosError) => {
             //     const { response } = error
